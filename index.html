@@ -5,89 +5,114 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crimes in my Area</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
     <script src="./assets/js/script.js"></script>
 </head>
 <body>
     <!-- header -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div class="navbar-brand">
-          <!-- <a class="navbar-item" href="https://bulma.io"> -->
-            <h1> Crime Tracker</h1>
-            <!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28"> -->
-          </a>
-      
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
+    <nav class="breadcrumb is-centered has-background-success" aria-label="breadcrumbs">
+        <ul>
+          <li class="is-active is-size-1 has-text-weight-semibold"><a href="#" aria-current="page">Crime Tracker</a></li>
+        </ul>
       </nav>
+
 <!-- search bar with history -->
-      <div class="container">
-        <div class="row">
-            <div class="col-4 bg-info mt-3 rounded-3">
-                <p class="search-header my-1">Search for a city...</p>
-                <div class="input-group mb-3">
-                    <input id="cityInput" type="text" class="form-control" placeholder="Enter city name" aria-label="Enter city name">
-                    <div class="input-group-append">
-                        <button class="btn btn-dark" type="button" id="searchBtn">
-                            Search
-                        </button>
+      <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter">
+                    <div class="control" id="prevSearches">
+                        <input class="input mb-3" id="userInput" type="text" placeholder="Search for a city name...">
+                        <button class="button is-primary is-rounded mr-1 mb-1" id="searchBtn">Search</button>
+                        <button class="button is-warning is-rounded mr-1 mb-1" id="clearBtn">Clear History</button>
+                      </div>
+                </div>
+                <!-- current searched city big card -->
+                <div class="column">
+                    <div class="notification">
+                        <p class="is-size-2" id="currentCity">Current City Placeholder</p>
+                        <div id="currentcityInfo">
+                        <p class="is-size-5" id="currentCrimeInfo">Placeholder information</p>
+                        <p class="is-size-5" id="currentCrimeInfo1">Placeholder information</p>
+                        <p class="is-size-5" id="currentCrimeInfo2">Placeholder information</p>
+                        <p class="is-size-5" id="currentCrimeInfo3">Placeholder information</p>
+                    </div>
                     </div>
                 </div>
-                <button class="btn btn-dark mb-3" type="button" id="clearHistory">Clear history</button>
-                <form id="history"></form>
             </div>
-            <!-- Big card with current search -->
-            <div class="col-8">
-                <div class="row mr-0">
-                    <div class="col-12 bg-dark text-light m-3 rounded">
-                        <div class="row">
-                            <div class="col-12">
-                                <span id="city-name" class="city-name align-middle"></span>
-                                <img id="currentPic" src="" alt="">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p id="weatherCond"></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p id="Temperature"></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p id="windSpeed"></p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <p id="humidity"></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        </div>
+      </section>
+        
+           
                 <!-- nearby cities container -->
-                <div class="row">
-            <div class="col-12 m-1">
-                <h3>5 Day Weatherforcast</h3>
+    <section class="section">
+        <p class="is-size-2 has-text-centered mb-3">Nearby cities</p>
+        <div class="container">
+            <div class="columns is-multiline">
+                <div class="column is-one-third">
+                    <div class="notification has-background-info-light">
+                        <h1 class="title is-size-4" id="nearbyCity1">Nearby city 1</h1>
+                        <div id="appendinfo1">
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="notification has-background-primary-light">
+                        <h1 class="title is-size-4" id="nearbyCity2">Nearby city 2</h1>
+                        <div id="appendinfo2">
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="notification has-background-warning-light">
+                        <h1 class="title is-size-4" id="nearbyCity3">Nearby city 3</h1>
+                        <div id="appendinfo3">
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="notification has-background-info-light">
+                        <h1 class="title is-size-4" id="nearbyCity4">Nearby city 4</h1>
+                        <div id="appendinfo4">
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="notification has-background-primary-light">
+                        <h1 class="title is-size-4" id="nearbyCity5">Nearby city 5</h1>
+                        <div id="appendinfo5">
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="notification has-background-warning-light">
+                        <h1 class="title is-size-4" id="nearbyCity6">Nearby city 6</h1>
+                        <div id="appendinfo6">
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                        <p class="is-size-6"> placeholder info</p>
+                    </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row m-3">
-            <div class="col forecast bg-dark text-white ml-3 mb-3 rounded m-1"></div>
-            <div class="col forecast bg-dark text-white ml-3 mb-3 rounded m-1"></div>
-            <div class="col forecast bg-dark text-white ml-3 mb-3 rounded m-1"></div>
-            <div class="col forecast bg-dark text-white ml-3 mb-3 rounded m-1"></div>
-            <div class="col forecast bg-dark text-white ml-3 mb-3 rounded m-1"></div>
-        </div>
-      </div>  
-    </div>
-</div>
+    </section>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
