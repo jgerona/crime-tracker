@@ -1,3 +1,13 @@
+fetch("http://api.zippopotam.us/us/wa/seattle")
+.then(function(response){
+    return response.json();
+})
+.then(function(data){
+    console.log(data);
+})
+
+
+
 fetch("https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=94109")
     .then(response => response.json())
     .then(response => console.log(response))
