@@ -2,6 +2,7 @@ var searchEl = document.getElementById("searchBtn");
 var currentCity = document.getElementById("currentCity"); // current searched city card on html
 // var crimeUrl = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=" + zipcode;
 var cityName;
+
 searchEl.addEventListener("click", function(event) {
     var city = document.getElementById("cityInput").value;
     var state = document.getElementById("stateInput").value;
@@ -15,7 +16,9 @@ function getZipcode(state,city){
             return response.json();
         })
         .then(function(data){
+
             cityName = data["place name"] + ", " + state.toUpperCase();
+
             for(var i =0; i<5; i++){
                 var zipcode = (data.places[i]["post code"]);
                 var crimeUrl = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=" + zipcode;
@@ -28,6 +31,7 @@ function getZipcode(state,city){
                             console.log(data.Overall.Fact);
                             currentCity.innerHTML = cityName;
                             document.getElementById("currentCrimeInfo").innerHTML = data.Overall.Fact;
+
     document.getElementById("currentCrimeInfo1").innerHTML = "Overall crime grade: " + data.Overall["Overall Crime Grade"];
     document.getElementById("currentCrimeInfo2").innerHTML = "Violent crime grade: " + data.Overall["Violent Crime Grade"];
     document.getElementById("currentCrimeInfo3").innerHTML = "Property Crime Grade:  " + data.Overall["Property Crime Grade"];
@@ -71,6 +75,7 @@ document.getElementById("info11").innerHTML = "Violent Crime Grade: " + data["Cr
 document.getElementById("info12").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][3]['Property Crime Grade'];
 }
 
+
 function fillCont5(data){
     document.getElementById("nearbyCity5").innerHTML = data["Crime Rates Nearby"][4]['Nearby Zip'];
 document.getElementById("info13").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][4]['Overall Crime Grade'];
@@ -84,3 +89,4 @@ document.getElementById("info16").innerHTML = "Overall Crime Grade: " + data["Cr
 document.getElementById("info17").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][5]["Violent Crime Grade"];
 document.getElementById("info18").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][5]['Property Crime Grade'];
 }
+
