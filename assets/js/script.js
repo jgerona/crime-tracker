@@ -3,10 +3,46 @@ var currentCity = document.getElementById("currentCity"); // current searched ci
 // var crimeUrl = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=" + zipcode;
 var cityName;
 
+var historyList = [];
+var clearEl = document.getElementById("clearBtn");
+var prevBtns = document.getElementById("buttons");
+function init(){
+    var storedHistory = JSON.parse(localStorage.getItem("storedHistory")) || [];
+    if (storedHistory !== null){
+        historyList = storedHistory;
+    }
+    for (var i = 0; i <historyList.length; i++){
+        createButton(historyList[i].state, historyList[i].city);
+    }
+}
+
+function createButton(state, city){
+    var historyEl = document.createElement("button");
+    historyEl.innerHTML = city + ", " + state;
+    historyEl.setAttribute("class", "button is-warning is-rounded mr-1 mb-1");
+    historyEl.addEventListener("click", function() {
+        getZipcode(state, city);
+    })
+    prevBtns.appendChild(historyEl);
+}
+
 searchEl.addEventListener("click", function(event) {
     var city = document.getElementById("cityInput").value;
     var state = document.getElementById("stateInput").value;
     getZipcode(state,city);
+    var searched = {
+        state: state,
+        city: city
+    }
+    historyList.push(searched);
+    localStorage.setItem("storedHistory", JSON.stringify(historyList));
+    createButton(state, city);
+})
+
+clearEl.addEventListener("click", function(){
+    historyList = [];
+    localStorage.clear();
+    location.reload();
 })
 
 function getZipcode(state,city){
@@ -89,4 +125,7 @@ document.getElementById("info16").innerHTML = "Overall Crime Grade: " + data["Cr
 document.getElementById("info17").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][5]["Violent Crime Grade"];
 document.getElementById("info18").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][5]['Property Crime Grade'];
 }
+
+
+init();
 
