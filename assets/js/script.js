@@ -46,7 +46,7 @@ clearEl.addEventListener("click", function(){
 })
 
 function getZipcode(state,city){
-    var zippoUrl = "http://api.zippopotam.us/us/" + state +"/"+city;
+    var zippoUrl = "https://api.zippopotam.us/us/" + state +"/"+city;
     fetch(zippoUrl)
         .then(function(response){
             return response.json();
