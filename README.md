@@ -1,5 +1,6 @@
 # Crime Tracker
 Crime Tracker, helping you stay informed about crime rates in your area.
+[Application Screenshot](./assets/readme%201.png)
 
 ## Description
 This application allows you to see the crime ratings for your area. After searching the desired city name, Crime Tracker will return ratings for violent crime, property crime, and overall crime. It will also populate six nearby area codes and their crime ratings. 
@@ -13,7 +14,10 @@ To build this application, we used:
 
 We decided to use these API's because they best fit our vision for this application. Using BULMA.io to support our UI design vision, we were able to efficiently customize elements to build a responsive interface. The API's used work together to return data requested by the user - Zippopotam.us providing geomapping of zip codes in correlation to their city names, and Crime Data by ZipCode providing crime data per zip code. 
 
-Some of the challenges we faced while building this application were...
+Some of the challenges we faced while building this application were:
+- GitHub collaboration
+- Merge conflicts
+- BULMA.io syntax
 
 ### Credits
 Application created by George Lin, Joseph Gerona, Jeffrey Corpuz, Avery Barela
