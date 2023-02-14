@@ -6,6 +6,10 @@ var cityName;
 var historyList = [];
 var clearEl = document.getElementById("clearBtn");
 var prevBtns = document.getElementById("buttons");
+var openModalBtn = document.getElementById("openModal");
+var mdl = document.getElementById("mdl");
+var closeModalBtn = document.getElementById("closeModalBtn");
+
 function init(){
     var storedHistory = JSON.parse(localStorage.getItem("storedHistory")) || [];
     if (storedHistory !== null){
@@ -126,6 +130,20 @@ document.getElementById("info17").innerHTML = "Violent Crime Grade: " + data["Cr
 document.getElementById("info18").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][5]['Property Crime Grade'];
 }
 
+openModalBtn.addEventListener("click", function() {
+    openMdl();
+});
+
+function  openMdl() {
+    mdl.classList.add("is-active");
+}
+
+closeModalBtn.addEventListener("click", function() {
+    closeMdl();
+});
+
+function closeMdl() {
+    mdl.classList.remove("is-active")
+}
 
 init();
-
