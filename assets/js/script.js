@@ -1,64 +1,60 @@
-<<<<<<< HEAD
-var city = document.getElementById("cityInput");
-var searchEl = document.getElementById("searchBtn");
-var currentCity = document.getElementById("currentCity");
-var state = document.getElementById("")
-var zippoURL = ("http://api.zippopotam.us/us/" + state + "/" + city)
-var crimeURL = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip" + zipcode;
-
-searchEl.addEventListener("click",function(){
-    city = cityInput.value;
-    state = stateInput.value;
-    getZipcode(state, city);
-})
-
-function getZipcode(state,city){
-    fetch(zippoURL)
-    .then(function(response){
-        return response.json();
-    })
-    .then(function(data){
-        console.log(data);
-        var zipcode = data.places[1]["post code"];
-        console.log(zipcode);
-        getCrime(zipcode);
-    })
-}
-
-// function getCrimeMain(zipCode) {
-//     currentCity.innerHTML = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip" + zipcode;
-
-//     fetch(crimeURL)
-//     .then(function(response){
-//         console.log(crimeURL);
-//         return response.json();
-//     })
-//     .then(function(data){
-//         console.log(data);
-//         getCrime(zipcode);
-//     })
-// }
-
-=======
-
 var searchEl = document.getElementById("searchBtn");
 var currentCity = document.getElementById("currentCity"); // current searched city card on html
 // var crimeUrl = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=" + zipcode;
+var cityName;
+
+var historyList = [];
+var clearEl = document.getElementById("clearBtn");
+var prevBtns = document.getElementById("buttons");
+function init(){
+    var storedHistory = JSON.parse(localStorage.getItem("storedHistory")) || [];
+    if (storedHistory !== null){
+        historyList = storedHistory;
+    }
+    for (var i = 0; i <historyList.length; i++){
+        createButton(historyList[i].state, historyList[i].city);
+    }
+}
+
+function createButton(state, city){
+    var historyEl = document.createElement("button");
+    historyEl.innerHTML = city + ", " + state;
+    historyEl.setAttribute("class", "button is-warning is-rounded mr-1 mb-1");
+    historyEl.addEventListener("click", function() {
+        getZipcode(state, city);
+    })
+    prevBtns.appendChild(historyEl);
+}
 
 searchEl.addEventListener("click", function(event) {
     var city = document.getElementById("cityInput").value;
     var state = document.getElementById("stateInput").value;
     getZipcode(state,city);
+    var searched = {
+        state: state,
+        city: city
+    }
+    historyList.push(searched);
+    localStorage.setItem("storedHistory", JSON.stringify(historyList));
+    createButton(state, city);
+})
+
+clearEl.addEventListener("click", function(){
+    historyList = [];
+    localStorage.clear();
+    location.reload();
 })
 
 function getZipcode(state,city){
-    var zippoUrl = "http://api.zippopotam.us/us/" + state +"/"+city;
+    var zippoUrl = "https://api.zippopotam.us/us/" + state +"/"+city;
     fetch(zippoUrl)
         .then(function(response){
             return response.json();
         })
         .then(function(data){
-            var cityName = data["place name"] + ", " + state.toUpperCase();
+
+            cityName = data["place name"] + ", " + state.toUpperCase();
+
             for(var i =0; i<5; i++){
                 var zipcode = (data.places[i]["post code"]);
                 var crimeUrl = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=" + zipcode;
@@ -71,40 +67,64 @@ function getZipcode(state,city){
                             console.log(data.Overall.Fact);
                             currentCity.innerHTML = cityName;
                             document.getElementById("currentCrimeInfo").innerHTML = data.Overall.Fact;
-                        }
 
-                    })
+    document.getElementById("currentCrimeInfo1").innerHTML = "Overall crime grade: " + data.Overall["Overall Crime Grade"];
+    document.getElementById("currentCrimeInfo2").innerHTML = "Violent crime grade: " + data.Overall["Violent Crime Grade"];
+    document.getElementById("currentCrimeInfo3").innerHTML = "Property Crime Grade:  " + data.Overall["Property Crime Grade"];
+    fillCont1(data);
+    fillCont2(data);
+    fillCont3(data);
+    fillCont4(data);
+    fillCont5(data);
+    fillCont6(data);
+                }
+                })
             }
-            
         })
 }
 
-// function getCrimeMain(zipcode) {
-//     //currentCity.innerHTML
-//     var crimeUrl = "https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=" + zipcode;
-//     fetch(crimeUrl)
-//         .then(function(response){
-//             console.log(crimeUrl);
-//             return response.json();
-//         })
-//         .then(function(data){
-//             console.log(data);
-//         })
-// }
+function fillCont1(data){
+    document.getElementById("nearbyCity1").innerHTML = data["Crime Rates Nearby"][0]['Nearby Zip'];
+document.getElementById("info1").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][0]['Overall Crime Grade'];
+document.getElementById("info2").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][0]["Violent Crime Grade"];
+document.getElementById("info3").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][0]['Property Crime Grade'];
+}
+
+function fillCont2(data){
+    document.getElementById("nearbyCity2").innerHTML = data["Crime Rates Nearby"][1]['Nearby Zip'];
+document.getElementById("info4").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][1]['Overall Crime Grade'];
+document.getElementById("info5").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][1]["Violent Crime Grade"];
+document.getElementById("info6").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][1]['Property Crime Grade'];
+}
+
+function fillCont3(data){
+    document.getElementById("nearbyCity3").innerHTML = data["Crime Rates Nearby"][2]['Nearby Zip'];
+document.getElementById("info7").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][2]['Overall Crime Grade'];
+document.getElementById("info8").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][2]["Violent Crime Grade"];
+document.getElementById("info9").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][2]['Property Crime Grade'];
+}
+
+function fillCont4(data){
+    document.getElementById("nearbyCity4").innerHTML = data["Crime Rates Nearby"][3]['Nearby Zip'];
+document.getElementById("info10").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][3]['Overall Crime Grade'];
+document.getElementById("info11").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][3]["Violent Crime Grade"];
+document.getElementById("info12").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][3]['Property Crime Grade'];
+}
 
 
-// fetch(zippoUrl)
-// .then(function(response){
-//     return response.json();
-// })
-// .then(function(data){
-//     console.log(data);
-// })
+function fillCont5(data){
+    document.getElementById("nearbyCity5").innerHTML = data["Crime Rates Nearby"][4]['Nearby Zip'];
+document.getElementById("info13").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][4]['Overall Crime Grade'];
+document.getElementById("info14").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][4]["Violent Crime Grade"];
+document.getElementById("info15").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][4]['Property Crime Grade'];
+}
+
+function fillCont6(data){
+    document.getElementById("nearbyCity6").innerHTML = data["Crime Rates Nearby"][5]['Nearby Zip'];
+document.getElementById("info16").innerHTML = "Overall Crime Grade: " + data["Crime Rates Nearby"][5]['Overall Crime Grade'];
+document.getElementById("info17").innerHTML = "Violent Crime Grade: " + data["Crime Rates Nearby"][5]["Violent Crime Grade"];
+document.getElementById("info18").innerHTML = "Property Crime Grade: " + data['Crime Rates Nearby'][5]['Property Crime Grade'];
+}
 
 
-
->>>>>>> 6c16c17482281b6330c8257d6ed344023a737262
-// fetch("https://crime-data-by-zipcode-api.p.rapidapi.com/crime_data?zip=94109")
-//     .then(response => response.json())
-//     .then(response => console.log(response))
-//     .catch(err => console.error(err));
+init();
