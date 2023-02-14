@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crimes in my Area</title>
+    <title>Crimes Tracker</title>
 
     <link rel="stylesheet" href="./assets/css/style.css">
 
@@ -28,19 +28,20 @@
                         <input class="input mb-3" id="stateInput" type="text" placeholder="Enter state code...">
                         <button class="button is-primary is-rounded mr-1 mb-1" id="searchBtn">Search</button>
                         <button class="button is-warning is-rounded mr-1 mb-1" id="clearBtn">Clear History</button>
-                        
+                        <button class="button is-info is-rounded mr-1 mb-1" id ="openModal">Rating Key</button>
+
                         <div id="buttons"></div>
                       </div>
                 </div>
                 <!-- current searched city big card -->
                 <div class="column">
                     <div class="notification">
-                        <p class="is-size-2" id="currentCity">Current City Placeholder</p>
+                        <p class="is-size-2" id="currentCity">Current City</p>
                         <div id="currentcityInfo">
-                        <p class="is-size-5" id="currentCrimeInfo">Placeholder information</p>
-                        <p class="is-size-5" id="currentCrimeInfo1">Placeholder information</p>
-                        <p class="is-size-5" id="currentCrimeInfo2">Placeholder information</p>
-                        <p class="is-size-5" id="currentCrimeInfo3">Placeholder information</p>
+                        <p class="is-size-5" id="currentCrimeInfo"></p>
+                        <p class="is-size-5" id="currentCrimeInfo1"></p>
+                        <p class="is-size-5" id="currentCrimeInfo2"></p>
+                        <p class="is-size-5" id="currentCrimeInfo3"></p>
                     </div>
                     </div>
                 </div>
@@ -56,67 +57,80 @@
             <div class="columns is-multiline">
                 <div class="column is-one-third">
                     <div class="notification has-background-info-light">
-                        <h1 class="title is-size-4" id="nearbyCity1">Nearby city 1</h1>
+                        <h1 class="title is-size-4" id="nearbyCity1">Nearby zipcode 1</h1>
                         <div id="appendinfo1">
-                        <p class="is-size-6" id="info1"> placeholder info</p>
-                        <p class="is-size-6" id="info2"> placeholder info</p>
-                        <p class="is-size-6" id="info3"> placeholder info</p>
+                        <p class="is-size-6" id="info1"></p>
+                        <p class="is-size-6" id="info2"></p>
+                        <p class="is-size-6" id="info3"></p>
                     </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="notification has-background-primary-light">
-                        <h1 class="title is-size-4" id="nearbyCity2">Nearby city 2</h1>
+                        <h1 class="title is-size-4" id="nearbyCity2">Nearby zipcode 2</h1>
                         <div id="appendinfo2">
-                        <p class="is-size-6" id="info4"> placeholder info</p>
-                        <p class="is-size-6" id="info5"> placeholder info</p>
-                        <p class="is-size-6" id="info6"> placeholder info</p>
+                        <p class="is-size-6" id="info4"></p>
+                        <p class="is-size-6" id="info5"></p>
+                        <p class="is-size-6" id="info6"></p>
                     </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="notification has-background-warning-light">
-                        <h1 class="title is-size-4" id="nearbyCity3">Nearby city 3</h1>
+                        <h1 class="title is-size-4" id="nearbyCity3">Nearby zipcode 3</h1>
                         <div id="appendinfo3">
-                        <p class="is-size-6" id="info7"> placeholder info</p>
-                        <p class="is-size-6" id="info8"> placeholder info</p>
-                        <p class="is-size-6" id="info9"> placeholder info</p>
+                        <p class="is-size-6" id="info7"></p>
+                        <p class="is-size-6" id="info8"></p>
+                        <p class="is-size-6" id="info9"></p>
                     </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="notification has-background-info-light">
-                        <h1 class="title is-size-4" id="nearbyCity4">Nearby city 4</h1>
+                        <h1 class="title is-size-4" id="nearbyCity4">Nearby zipcode 4</h1>
                         <div id="appendinfo4">
-                        <p class="is-size-6" id="info10"> placeholder info</p>
-                        <p class="is-size-6" id="info11"> placeholder info</p>
-                        <p class="is-size-6" id="info12"> placeholder info</p>
+                        <p class="is-size-6" id="info10"></p>
+                        <p class="is-size-6" id="info11"></p>
+                        <p class="is-size-6" id="info12"></p>
                     </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="notification has-background-primary-light">
-                        <h1 class="title is-size-4" id="nearbyCity5">Nearby city 5</h1>
+                        <h1 class="title is-size-4" id="nearbyCity5">Nearby zipcode 5</h1>
                         <div id="appendinfo5">
-                        <p class="is-size-6" id="info13"> placeholder info</p>
-                        <p class="is-size-6" id="info14"> placeholder info</p>
-                        <p class="is-size-6" id="info15"> placeholder info</p>
+                        <p class="is-size-6" id="info13"></p>
+                        <p class="is-size-6" id="info14"></p>
+                        <p class="is-size-6" id="info15"></p>
                     </div>
                     </div>
                 </div>
                 <div class="column is-one-third">
                     <div class="notification has-background-warning-light">
-                        <h1 class="title is-size-4" id="nearbyCity6">Nearby city 6</h1>
+                        <h1 class="title is-size-4" id="nearbyCity6">Nearby zipcode 6</h1>
                         <div id="appendinfo6">
-                        <p class="is-size-6" id="info16"> placeholder info</p>
-                        <p class="is-size-6" id="info17"> placeholder info</p>
-                        <p class="is-size-6" id="info18"> placeholder info</p>
+                        <p class="is-size-6" id="info16"></p>
+                        <p class="is-size-6" id="info17"></p>
+                        <p class="is-size-6" id="info18"></p>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="modal" id="mdl">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <div class="box">
+                <!-- Any other Bulma elements you want -->
+            <p>A: Lowest rate of crime</p>
+            <p>F: Highest rate of crime</p>
+            </div>
+        </div>
+        <button class="modal-close is-large" id="closeModalBtn" aria-label="close"></button>
+    </div>
+
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
