@@ -1,6 +1,6 @@
 # Crime Tracker
 Crime Tracker, helping you stay informed about crime rates in your area.
-[Application Screenshot](./assets/readme%201.png)
+![Application Screenshot](./assets/readme%201.png)
 
 ## Description
 This application allows you to see the crime ratings for your area. After searching the desired city name, Crime Tracker will return ratings for violent crime, property crime, and overall crime. It will also populate six nearby area codes and their crime ratings. 
