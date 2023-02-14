@@ -1,6 +1,6 @@
 # Crime Tracker
 Crime Tracker, helping you stay informed about crime rates in your area.
-![Application Screenshot](./assets/readme%201.png)
+
 
 ## Description
 This application allows you to see the crime ratings for your area. After searching the desired city name, Crime Tracker will return ratings for violent crime, property crime, and overall crime. It will also populate six nearby area codes and their crime ratings. 
@@ -18,6 +18,8 @@ Some of the challenges we faced while building this application were:
 - GitHub collaboration
 - Merge conflicts
 - BULMA.io syntax
+
+![Application Screenshot](./assets/readme%201.png)
 
 ### Credits
 Application created by George Lin, Joseph Gerona, Jeffrey Corpuz, Avery Barela
