@@ -26,9 +26,9 @@
                     <div class="control">
                         <input class="input mb-3" id="cityInput" type="text" placeholder="Enter a city name...">
                         <input class="input mb-3" id="stateInput" type="text" placeholder="Enter state code...">
-                        <button class="button is-primary is-rounded mr-1 mb-1" id="searchBtn">Search</button>
-                        <button class="button is-warning is-rounded mr-1 mb-1" id="clearBtn">Clear History</button>
-                        <button class="button is-info is-rounded mr-1 mb-1" id ="openModal">Rating Key</button>
+                        <button class="button is-primary is-rounded mr-1 mb-1 has-text-dark" id="searchBtn">Search</button>
+                        <button class="button is-warning is-rounded mr-1 mb-1 has-text-dark" id="clearBtn">Clear History</button>
+                        <button class="button is-info is-rounded mr-1 mb-1 has-text-white" id ="openModal">Rating Key</button>
 
                         <div id="buttons"></div>
                       </div>
@@ -52,7 +52,7 @@
            
                 <!-- nearby cities container -->
     <section class="section">
-        <p class="is-size-2 has-text-centered mb-3">Crime Breakdown in Nearby Zipcodes</p>
+        <p class="is-size-2 has-text-centered has-text-bold has-text-white mb-3">Crime Breakdown in Nearby Zipcodes</p>
         <div class="container">
             <div class="columns is-multiline">
                 <div class="column is-one-third">
@@ -122,10 +122,9 @@
     <div class="modal" id="mdl">
         <div class="modal-background"></div>
         <div class="modal-content">
-            <div class="box">
-                <!-- Any other Bulma elements you want -->
-            <p>A: Lowest rate of crime</p>
-            <p>F: Highest rate of crime</p>
+            <div class="box is-size-3 has-text-dark">
+                <p>A: Lowest rate of crime</p>
+                <p>F: Highest rate of crime</p>
             </div>
         </div>
         <button class="modal-close is-large" id="closeModalBtn" aria-label="close"></button>
