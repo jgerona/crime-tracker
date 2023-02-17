@@ -19,7 +19,7 @@ Some of the challenges we faced while building this application were:
 - Merge conflicts
 - BULMA.io syntax
 
-![Application Screenshot](./assets/readme%201.png)
+![Application Screenshot](./assets/Crimes%20Tracker.png)
 
 ### Credits
 Application created by George Lin, Joseph Gerona, Jeffrey Corpuz, Avery Barela
